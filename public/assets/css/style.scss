@@ -1,0 +1,566 @@
+// general codes
+$popp: 'Poppins','sans-serif';
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+body {
+  background: #292930;
+}
+.about_section {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  align-items: center;
+  .line {
+    width: 40%;
+    height: 5px;
+    background: #fff;
+    border-radius: 8px;
+  }
+   h4 {
+    font-size: 1.3rem;
+    font-family: $popp;
+    font-weight: 500;
+    color: #fff;
+     text-align: center;
+  }
+}
+.blur {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(73, 73, 73, 0.35);
+  backdrop-filter: blur(2px);
+  z-index: 1;
+}
+.container {
+    max-width: 1140px;
+    margin: auto; 
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+.transition-fade {
+    transition: 0.4s;
+    opacity: 1;
+  }
+html.is-animating .transition-fade {
+  opacity: 0;
+}
+//Main part
+.main {
+  background-image: url("../images/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  backdrop-filter: blur(15px);
+  .info {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    h3 {
+      color: #fff;
+      font: {
+        size: 4rem;
+        weight: 700;
+        family: open-sans;
+      }
+    }
+    a {
+      text-decoration: none;
+
+    }
+    button {
+      margin-top: 30px;
+      width: 70%;
+      height: 15px;
+      padding: 20px 15px;
+      font-family: sans-serif;
+      background: none;
+      border: 3px solid #fff;
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items:center;
+      cursor: pointer;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #fff;
+      transition: all 0.2s;
+    }
+    button:hover {
+      background: #fff;
+      color: #000;
+    }
+
+  }
+}
+
+//############################################################################# navbar ###################################
+// Navigation Variables
+$content-width: 1000px;
+$breakpoint: 799px;
+$nav-height: 70px;
+$nav-background: #262626;
+$nav-font-color: #ffffff;
+$link-hover-color: #2581DC;
+
+// Outer navigation wrapper
+.navigation {
+  height: $nav-height;
+  background: $nav-background;
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+// Logo and branding
+.brand {
+  position: absolute;
+  padding-left: 20px;
+  float: left;
+  line-height: $nav-height;
+  text-transform: uppercase;
+  font-size: 1.4em;
+  a,
+  a:visited {
+    color: $nav-font-color;
+    text-decoration: none;
+    font-family: $popp;
+  }
+}
+
+// Container with no padding for navbar
+.nav-container {
+  max-width: $content-width;
+  margin: 0 auto;
+}
+
+// Navigation
+nav {
+  float: right;
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li {
+      float: left;
+      position: relative;
+      a,
+      a:visited {
+        display: block;
+        padding: 0 20px;
+        line-height: $nav-height;
+        background: $nav-background;
+        color: $nav-font-color;
+        text-decoration: none;
+        font-family: $popp;
+        &:hover {
+          background: $link-hover-color;
+          color: $nav-font-color;
+        }
+        &:not(:only-child):after {
+          padding-left: 4px;
+          content: ' ▾';
+        }
+      } // Dropdown list
+      ul li {
+        min-width: 190px;
+        a {
+          padding: 15px;
+          line-height: 20px;
+        }
+      }
+    }
+  }
+}
+
+// Dropdown list binds to JS toggle event
+.nav-dropdown {
+  position: absolute;
+  display: none;
+  z-index: 1;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Mobile navigation */
+
+// Binds to JS Toggle
+.nav-mobile {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: $nav-background;
+  height: $nav-height;
+  width: $nav-height;
+}
+@media only screen and (max-width: 798px) {
+  // Hamburger nav visible on mobile only
+  .nav-mobile {
+    display: block;
+  }
+  nav {
+    width: 100%;
+    padding: $nav-height 0 15px;
+    ul {
+      display: none;
+      li {
+        float: none;
+        a {
+          padding: 15px;
+          line-height: 20px;
+        }
+        ul li a {
+          padding-left: 30px;
+        }
+      }
+    }
+  }
+  .nav-dropdown {
+    position: static;
+  }
+}
+@media screen and (min-width: $breakpoint) {
+  .nav-list {
+    display: block !important;
+  }
+}
+#nav-toggle {
+  position: absolute;
+  left: 18px;
+  top: 22px;
+  cursor: pointer;
+  padding: 10px 35px 16px 0px;
+  span,
+  span:before,
+  span:after {
+    cursor: pointer;
+    border-radius: 1px;
+    height: 5px;
+    width: 35px;
+    background: $nav-font-color;
+    position: absolute;
+    display: block;
+    content: '';
+    transition: all 300ms ease-in-out;
+  }
+  span:before {
+    top: -10px;
+  }
+  span:after {
+    bottom: -10px;
+  }
+  &.active span {
+    background-color: transparent;
+    &:before,
+    &:after {
+      top: 0;
+    }
+    &:before {
+      transform: rotate(45deg);
+    }
+    &:after {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+// Page content
+article {
+  max-width: $content-width;
+  margin: 0 auto;
+  padding: 10px;
+}
+//################################################################# navbar end ###################################################
+// food menu
+.foods_section {
+  background: #292930;
+  padding: 10px;
+  .section_small_info {
+    text-align: center;
+    font-size: 1rem;
+    opacity: 0.5;
+    font-family: $popp;
+    color: white;
+    font-weight: 200;
+    width: 60%;
+    margin-top: 20px;
+  }
+  .about_section {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    align-items: center;
+    .line {
+      width: 40%;
+      height: 5px;
+      background: #fff;
+      border-radius: 8px;
+    }
+     h4 {
+      font-size: 1.3rem;
+      font-family: $popp;
+      font-weight: 500;
+      color: #fff;
+    }
+     a {
+       font-size: 0.9rem;
+       font-family: $popp;
+       font-weight: 500;
+       color: #cae7df;
+       text-decoration: none;
+     }
+  }
+}
+.food_card {
+  background: #cae7df;
+  border-radius: 8px;
+  width: 100%;
+  height: max-content;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 15px 0;
+  .food_image {
+    img {
+      width: 350px;
+      border-radius: 8px;
+    }
+  }
+  .info-food {
+    padding: 10px 15px;
+    margin: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    vertical-align: initial;
+    .name_food {
+      width: 100%;
+      font: {
+        size: 1.8rem;
+        weight: 600;
+        family: "Poppins", sans-serif;
+      }
+    }
+    .desc_food {
+      width: 100%;
+      margin: 30px 0;
+      font: {
+        size: 1.2rem;
+        weight: 400;
+        family: "Poppins", sans-serif;
+      }
+    }
+    .footer_food {
+      a {
+         text-decoration: none;
+        font: {
+          size: 1rem;
+          weight: 400;
+          family: "Poppins", sans-serif;
+        }
+        background: #2a3166;
+        color: #fff;
+        border-radius:8px;
+        padding: 10px 15px;
+      }
+    }
+  }
+  .food-dignity {
+    padding: 10px 15px;
+    width: 10%;
+    h5 {
+      font-size: 1rem;
+      font-family: $popp;
+      font-weight: 500;
+    }
+  }
+}
+
+// About restaurant
+.about_container {
+  display: flex;
+  justify-content: space-around;
+  .cont_a {
+    width: 50%;
+  }
+}
+.about_restaurant {
+  background: #292930;
+  padding: 150px 10px;
+ 
+  .name_res {
+    font: {
+      family: open-sans;
+      size: 3rem;
+      weight: 500;
+    }
+    text-align: left;
+    color: white;
+  }
+  .about_little {
+    margin-top: 15px;
+    span {
+      color: #cae7df;
+      font: {
+        size: 0.9rem;
+        family: $popp;
+      }
+    }
+  }
+  .map_google {
+    margin-top: 30px;
+    .location {
+      text-align: center;
+      color: white;
+      font: {
+        size:2.5rem;
+        family: $popp;
+        weight: 500;
+      }
+    }
+  }
+}
+// ################### CONTACT US 
+.contact_us {
+  background: #292930;
+  font-family: $popp;
+  margin-bottom: 20px;
+  p {
+    color: #cae7df;
+  }
+  form{
+    width: 80%;
+    margin: auto; 
+    display: grid;
+  }
+  label {
+    color: #fff;
+  }
+  input, textarea {
+    padding: 8px 12px;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 10px;
+    font-family: $popp;
+    color: #000;
+  }
+  .btn {
+    padding: 15px 10px;
+    color: #292930;
+    background: #fff;
+    width: 30%;
+    font-size: 1.1rem;
+    font-weight: 400;
+    border: 2px solid #292930;
+    cursor: pointer;
+    transition: background 0.5s;
+  }
+  .btn:hover {
+    color: #fff;
+    background: #292930;
+    border: 2px solid #fff;
+  }
+  .required {
+    color: red;
+  }
+}
+//footer
+footer {
+  width: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 300;
+  font-family: $popp;
+  color: #fff;
+  span {
+    font-size: 0.8rem;
+  }
+  p {
+    color: rgba(255, 255, 255, 0.418);
+    font-size: 0.8rem;
+  }  
+}
+
+
+// RWD
+@media only screen and (max-width: 360px) {
+    html {
+      font-size: 14px;
+      .food_card {
+        background: #cae7df;
+        border-radius: 8px;
+        width: 100%;
+        height: max-content;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        margin: 15px 0;
+        .food_image {
+          overflow: hidden;
+          img {
+            width: 350px;
+            border-radius: 8px;
+            z-index: -1;
+          }
+        }
+        .info-food {
+          padding: 10px 15px;
+          margin: 5px;
+          display: flex;
+          vertical-align: initial;
+          .name_food {
+            width: 100%;
+            font: {
+              size: 1.8rem;
+              weight: 600;
+              family: "Poppins", sans-serif;
+            }
+          }
+          .desc_food {
+            width: 100%;
+            margin: 30px 0;
+            font: {
+              size: 1.2rem;
+              weight: 400;
+              family: "Poppins", sans-serif;
+            }
+          }
+          .footer_food {
+            a {
+               text-decoration: none;
+              font: {
+                size: 1rem;
+                weight: 400;
+                family: "Poppins", sans-serif;
+              }
+              background: #2a3166;
+              color: #fff;
+              border-radius:8px;
+              padding: 10px 15px;
+            }
+          }
+        }
+        .food-dignity {
+          padding: 10px 15px;
+          width: 10%;
+          display: none;
+          h5 {
+            font-size: 1rem;
+            font-family: $popp;
+            font-weight: 500;
+          }
+        }
+      }
+      
+    }
+}
