@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[MainController::class, 'index']);
 Route::get('/order/place',[MainController::class, 'orederPlace']);
+Route::get('/admin',[AdminController::class, 'login']);
+
+
