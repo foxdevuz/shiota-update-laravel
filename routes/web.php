@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[MainController::class, 'index']);
 Route::get('/order/place',[MainController::class, 'orederPlace']);
-Route::get('/admin',[AdminController::class, 'login']);
+Route::get('/admin',[AdminController::class, 'login'])->middleware('adminLogged');
+Route::get('/admin/dashboard', [AdminController::class, 'dashboard']);
 
-
+// post requests
+Route::post('/login', [AdminController::class, 'signin']);
